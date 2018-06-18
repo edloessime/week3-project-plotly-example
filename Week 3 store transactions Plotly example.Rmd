@@ -1,0 +1,30 @@
+---
+title: "Week 3 Store Analysis Plotly Example"
+author: "Ed Loessi"
+date: "June 17, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(ggplot2)
+rm(list = ls())
+warning = FALSE
+```
+
+## Store Sales and Discount Dollar Analysis
+
+This involves reviewing the total store sales and the discount dollars applied to customers.
+
+```{r}
+storedata = read.csv("C:/Users/edloessi/Documents/data/storeApplicantFile.csv")
+```
+
+## Plot the Data Using Plotly
+
+Using plotly, compare the sales, discount dollars awarded across the various stores, highlighting the number of transactions using bubble size.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(plotly)
+plot_ly(storedata, x = ~sales, y = ~discountDollars, type = "scatter", color = ~factor(storeNumber), size = ~numTransactions)
+```
